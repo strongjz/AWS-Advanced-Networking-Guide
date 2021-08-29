@@ -5,10 +5,12 @@
 * Courses 
 * Blog Posts 
 * Exam Guide 
-* Sample Exams
+* Sample Exams 
+* Things to remember
+
 
 | Domain | % of Exam |
-|---------------------|
+|--------|-------------|
 | Domain 1: Design and implement hybrid IT network architectures at scale | 24% |
 | Domain 2: Design and implement AWS networks | 28% |
 | Domain 3: Automate AWS tasks | 8% |
@@ -26,16 +28,25 @@
   * Route Tables
   * EC2
   * Placement groups
-  * Enhanced networking, additional ENI, ENA, EFA, ecosystem, EBS Optimized, MTU, throughput to the internet
+  * Enhanced networking
+    * Secondary ENI
+    * ENA
+    * EFA
+    * EBS Optimized
+    * MTU
+    * Throughput to the internet
   * VPC Traffic Mirroring
 * [Direct Connect link](https://aws.amazon.com/directconnect/faqs/?ep=sec&sec=spec_advn)
-* Connectivity Options
-  * VPN
+* AWS and IPsec VPN
+* Load Balancing
+* AWS Global Accelerator
+* Gateways 
+  * Internet gateway 
+  * Egress internet 
+  * NAT gateway
+  * Virtual GW
+  * Customer gateway
   * AWS Transit Gateway
-  * Virtual Gateway
-  * Internet Gateway 
-  * Load Balancing
-  * AWS Global Accelerator
 * AWS Config
 * Amazon SNS
 * AWS Lambda
@@ -44,16 +55,21 @@
 * Amazon CloudWatch Logs
 * Network Manager
 * [Route 53](https://aws.amazon.com/route53/faqs/?ep=sec&sec=spec_advn)
-* VPC flow log
-* AWS CloudTrail
-* IAM policies
-* AWS KMS
+* Network Security
+  * VPC flow log
+  * AWS CloudTrail
+  * IAM policies
+  * AWS KMS
+  * AWS WAF
+  * GaurdDuty
+  * AWS Shield
 
 ## Networking Topics
-* high availability/load balancing
+* High availability/load balancing
 * VLANs
 * 801.q 
 * BFD
+* Routing
 * Subnetting
 * DNS
 * DHCP
@@ -67,6 +83,7 @@
 
 
 ## Whitepapers
+
 * [Best Practices for VPCs and Networking in Amazon WorkSpaces Deployments](https://d1.awsstatic.com/whitepapers/best-practices-vpcs-networking-amazon-workspaces-deployments.pdf)
 * [Building a Scalable and Secure Multi-VPC AWS Network Infrastructure](https://docs.aws.amazon.com/whitepapers/latest/building-scalable-secure-multi-vpc-network-infrastructure/welcome.html)
 * [Amazon Virtual Private Cloud Connectivity Options](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/welcome.html)
@@ -85,3 +102,31 @@ https://d1.awsstatic.com/training-and-certification/docs-advnetworking-spec/AWS-
 
 ## Sample Exams
 
+## Things to remember 
+
+Route Table Priority
+
+|Priority  |Description|
+|----------|-------------|
+|1	|Local route, even if a more specific route exists for the CIDR|
+|2	|Most specific route (longest-prefix match)|
+|3	|Static routes are preferred over dynamic routes for equivalent prefixes|
+|4	|Dynamic routes propagated from AWS Direct Connect |
+|5	|Static routes configured on a VGW VPN connection |
+|6	|Dynamic routes propagated from a VPN |
+
+
+VPC Endpoints 
+
+Gateway endpoints ( Route Table entry )
+  - Amazon Simple Storage Service (Amazon S3) 
+  - Amazon DynamoDB. 
+
+Interface endpoints ( ENI in your VPC )
+  - Amazon Kinesis Streams
+  - Elastic Load Balancing API
+  - Amazon EC2 API 
+  - Amazon EC2 Systems Manager (SSM)
+  - AWS Service Catalog 
+  - Endpoint services hosted by other account
+  - Partner Solution s 
