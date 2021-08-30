@@ -96,6 +96,8 @@
 
 ## Blog Posts
 
+https://crishantha.medium.com/aws-site-to-site-vpn-c4baf45703fd
+
 ## Exam Guide
 
 https://d1.awsstatic.com/training-and-certification/docs-advnetworking-spec/AWS-Certified-Advanced-Networking-Specialty_Exam-Guide.pdf
