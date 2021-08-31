@@ -23,7 +23,7 @@
 * [VPC](https://aws.amazon.com/vpc/faqs/?ep=sec&sec=spec_advn)
   * NACL
   * Security Groups
-  * VPC endpoints
+  * [VPC endpoints](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-endpoints.html)
   * Subnets
   * Route Tables
   * EC2
@@ -36,7 +36,9 @@
     * MTU
     * Throughput to the internet
   * VPC Traffic Mirroring
-* [Direct Connect link](https://aws.amazon.com/directconnect/faqs/?ep=sec&sec=spec_advn)
+* Direct Connect link
+  * [FAQ](https://aws.amazon.com/directconnect/faqs/?ep=sec&sec=spec_advn)
+  * [Docs](https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html)
 * AWS and IPsec VPN
 * Load Balancing
 * AWS Global Accelerator
@@ -44,7 +46,7 @@
   * Internet gateway 
   * Egress internet 
   * NAT gateway
-  * Virtual GW
+  * [Virtual GW](http://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/vpc-ug.pdf)
   * Customer gateway
   * AWS Transit Gateway
 * AWS Config
@@ -61,14 +63,18 @@
   * IAM policies
   * AWS KMS
   * AWS WAF
-  * GaurdDuty
+  * GuardDuty
   * AWS Shield
 
 ## Networking Topics
 * High availability/load balancing
 * VLANs
 * 801.q 
+  * 802.1Q is an Ethernet standard as defined by the IEEE that enables Virtual Local Area Networks (VLANs) on an Ethernet network.
 * BFD
+  * Bidirectional Forwarding Detection (BFD) is a mechanism used to support fast failover of connections in the event of a failure in the forwarding path between two routers.
+* LAG
+  * A Link Aggregation Group (LAG) is a logical interface that uses the Link Aggregation Control Protocol (LACP) to aggregate multiple 1 Gbps or 10 Gbps connections
 * Routing
 * Subnetting
 * DNS
@@ -77,6 +83,9 @@
 * DMZ
 * Data at rest and in transit
 * BGP 
+  * Border Gateway Protocol (BGP) is a routing protocol used to exchange network routing and reachability information, either within the same or a different autonomous system.
+* AS_PATH prepending 
+  * is a mechanism where you artificially make the AS_PATH longer on one connection compared to the other by adding your own ASN multiple times to the path.
 
 
 
@@ -92,7 +101,10 @@
 * [Integrating AWS with Multiprotocol Label Switching](https://d1.awsstatic.com/whitepapers/Networking/integrating-aws-with-multiprotocol-label-switching.pdf)
 * [AWS Certified Advanced Networking Official Study Guide: Specialty Exam](https://www.amazon.com/Certified-Advanced-Networking-Official-Study-ebook/dp/B079VKD1CN)
 
-## Courses
+## Courses/Videos
+
+- [AWS re:Invent 2017: Deep Dive: AWS Direct Connect and VPNs (NET403)](https://www.youtube.com/watch?v=eNxPhHTN8gY)
+- [AWS re:Invent 2017: Extending Data Centers to the Cloud: Connectivity Options and Co (NET301)](https://www.youtube.com/watch?v=lN2RybC9Vbk)
 
 ## Blog Posts
 
@@ -117,6 +129,18 @@ Route Table Priority
 |5	|Static routes configured on a VGW VPN connection |
 |6	|Dynamic routes propagated from a VPN |
 
+BGP path selection order is as follows:
+
+1. Local routes to the VPC (no override with more specific routing)
+2. Longest prefix match first
+3. Static route table entries preferred over dynamic
+4. Dynamic routes:
+   1. Prefer AWS Direct Connect BGP routes 
+      1. Shorter AS_PATH 
+      2. Considered equivalent and will balance traffic per flow
+   2. VPN static routes (defined on VPN connection)
+   3. BGP routes from VPN 
+      1. Shorter AS_PATH
 
 VPC Endpoints 
 
@@ -131,4 +155,4 @@ Interface endpoints ( ENI in your VPC )
   - Amazon EC2 Systems Manager (SSM)
   - AWS Service Catalog 
   - Endpoint services hosted by other account
-  - Partner Solution s 
+  - Partner Solutions
